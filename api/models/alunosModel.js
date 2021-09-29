@@ -6,17 +6,24 @@ const arrayOfStudents = path.join(__dirname, '.', 'alunos.json');
 const getStudents = async () => {
   try {
     const students = await fs.readFile(arrayOfStudents, 'utf8');
-    console.log(students);
     return JSON.parse(students);
   } catch (err) {
     return 'Não foi achado os dados';
   }
 };
 
-const createNewStudent = async (nome, email, dataNascimento, numeroMatricula) => {
+const createNewStudent = async (name, email, birthday, registration) => {
   const students = await getStudents();
   students.push({
-    nome, email, dataNascimento, numeroMatricula,
+    name, email, birthday, registration,
   });
   await fs.writeFile(arrayOfStudents, JSON.stringify(students));
+  return {
+    name, email, birthday, registration,
+  };
+};
+
+module.exports = {
+  createNewStudent,
+  getStudents
 };

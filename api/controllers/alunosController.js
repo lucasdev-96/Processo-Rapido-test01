@@ -6,7 +6,7 @@ const createNewStudent = async (req, res) => {
     birthday, registration,
   } = req.body;
   const newStudent = await alunosModel.createNewStudent(name, email, birthday, registration);
-  res.status(200).json({ student: newStudent });
+  res.status(201).json({ student: newStudent });
 };
 
 const getStudents = async (_req, res) => {
@@ -22,8 +22,15 @@ const getStudentByName = async (req, res) => {
   res.status(200).json(student);
 };
 
+const deleteStudentByName = async (req, res) => {
+  const { name } = req.params;
+  await alunosModel.deleteStudentByName(name);
+  res.status(202).json({ message: 'Aluno excluído com sucesso' });
+};
+
 module.exports = {
   createNewStudent,
   getStudents,
   getStudentByName,
+  deleteStudentByName,
 };

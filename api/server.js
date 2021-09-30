@@ -15,6 +15,8 @@ app.get('/aluno/listar', alunosControllers.getStudents);
 
 app.get('/aluno/:name', alunosControllers.getStudentByName);
 
+app.delete('/aluno/:name', alunosControllers.deleteStudentByName);
+
 app.listen(PORT, (err) => {
   if (err) console.log(err);
   console.log(`Rodando com sucesso na porta ${PORT}`);

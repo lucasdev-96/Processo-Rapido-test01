@@ -17,7 +17,7 @@ app.get('/aluno/:name', alunosControllers.getStudentByName);
 
 app.delete('/aluno/:name', alunosControllers.deleteStudentByName);
 
-app.put('/aluno/:nome', alunosMiddlewares.validateEmailStudent, alunosControllers.updateStudentByName);
+app.put('/aluno/:nome', alunosMiddlewares.validateInfosStudentUpdate, alunosMiddlewares.validateEmailStudent, alunosControllers.updateStudentByName);
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);

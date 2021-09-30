@@ -17,7 +17,14 @@ const validateEmailStudent = (req, res, next) => {
   next();
 };
 
+const validateInfosStudentUpdate = (req, res, next) => {
+  const { name, email } = req.body;
+  if (!name || !email) return res.status(400).json({ message: 'name ou email não informados' });
+  next();
+};
+
 module.exports = {
   validateInfosStudent,
   validateEmailStudent,
+  validateInfosStudentUpdate,
 };

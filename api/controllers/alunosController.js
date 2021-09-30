@@ -32,7 +32,6 @@ const deleteStudentByName = async (req, res) => {
 const updateStudentByName = async (req, res) => {
   const { nome } = req.params;
   const { name, email } = req.body;
-  if (!name || !email) return res.status(400).json({ message: 'name ou email não informados' });
   const student = await alunosModel.updateStudentByName(nome, name, email);
   if (student < 0) return res.status(404).json({ message: 'Aluno não encontrado' });
   res.status(200).json(student);

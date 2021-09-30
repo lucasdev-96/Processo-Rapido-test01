@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 
 app.post('/aluno/cadastrar', alunosMiddlewares.validateInfosStudent, alunosControllers.createNewStudent);
 
-app.get('/aluno/listar', alunosControllers.getStudents)
+app.get('/aluno/listar', alunosControllers.getStudents);
+
+app.get('/aluno/:name', alunosControllers.getStudentByName);
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);

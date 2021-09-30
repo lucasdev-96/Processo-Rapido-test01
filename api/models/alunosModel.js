@@ -25,13 +25,12 @@ const createNewStudent = async (name, email, birthday, registration) => {
 
 const getStudentByName = async (studentName) => {
   const students = await getStudents();
-  const student = students.find(({name}) => studentName === name );
+  const student = students.find(({ name }) => studentName.toLowerCase() === name.toLowerCase());
   return student;
-}
-
+};
 
 module.exports = {
   createNewStudent,
   getStudents,
-  getStudentByName
+  getStudentByName,
 };

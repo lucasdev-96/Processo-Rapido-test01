@@ -11,8 +11,15 @@ const createNewStudent = async (req, res) => {
 
 const getStudents = async (_req, res) => {
     const students = await alunosModel.getStudents();
-    if(!students) return res.status(404).json({message: 'Not Found!'})
+    if(students.length === 0) return res.status(404).json({message: 'Sem cadastros de alunos'})
     res.status(200).json({ students});
+}
+
+const getStudentByName = async (req, res) => {
+  const { name } = req.params;
+ const student = await alunosModel.getStudentByName(name);
+ if(!student) return res.status(404).json({message: 'Estudando não encontrado'});
+ res.status(200).json({student});
 }
 
 module.exports = {

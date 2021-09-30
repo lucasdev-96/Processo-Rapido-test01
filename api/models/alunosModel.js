@@ -23,7 +23,15 @@ const createNewStudent = async (name, email, birthday, registration) => {
   };
 };
 
+const getStudentByName = async (studentName) => {
+  const students = await getStudents();
+  const student = students.find(({name}) => studentName === name );
+  return student;
+}
+
+
 module.exports = {
   createNewStudent,
-  getStudents
+  getStudents,
+  getStudentByName
 };

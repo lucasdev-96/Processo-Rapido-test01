@@ -1,8 +1,10 @@
 
 <h3>Para rodar o projeto</h3>
 
-<li>Primeiro rode o comando: npm install</li>
-<li>Segundo rode o comando: npm run dev</li>
+```bash 
+ npm install
+ npm run dev
+ ```
 
 ---
 

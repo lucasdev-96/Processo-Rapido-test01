@@ -10,6 +10,7 @@
 <h3>Para fazer requisicoes na api</h3>
 
 <li>Primeiro acesse http://localhost:3000/ mais o path</li>
+<li>Use o Insomnia, Postman ou Httpie</li> 
 
 
 <li>Para cadastrar usuário no método POST na rota /aluno/cadastrar, na requisicao tem que ter as seguintes chaves:  (name, email, birthday, registration)</li>

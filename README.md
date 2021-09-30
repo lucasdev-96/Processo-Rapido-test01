@@ -16,3 +16,4 @@
 <li>Para visualizar os alunos a rota tem que ser no metodo GET: /aluno/listar</li>
 <li>Para filtrar o aluno por nome utilize o método GET no path /aluno/passeONomeDoALuno
 <li>Para excluir aluno utilize o método DELETE no path /aluno/passONomeDoAluno</li>
+<li>Para atualizar um aluno utlize o método PUT no path /aluno/passONomeDoAluno passando no body as chaves name, email</li>

@@ -33,8 +33,24 @@ const deleteStudentByName = async (studentName) => {
   const students = await getStudents();
   const student = students
     .findIndex(({ name }) => name.toLowerCase() === studentName.toLowerCase());
-  students.splice(student, 1);
-  await fs.writeFile(arrayOfStudents, JSON.stringify(students));
+  if (student >= 0) {
+    students.splice(student, 1);
+    await fs.writeFile(arrayOfStudents, JSON.stringify(students));
+  } else {
+    return student;
+  }
+};
+
+const updateStudentByName = async (studentName, name, email) => {
+  const students = await getStudents();
+  const student = students
+    .findIndex((elem) => elem.name.toLowerCase() === studentName.toLowerCase());
+  if (student >= 0) {
+    students[student] = { ...students[student], name, email };
+    await fs.writeFile(arrayOfStudents, JSON.stringify(students));
+    return students[student];
+  }
+  return student;
 };
 
 module.exports = {
@@ -42,4 +58,5 @@ module.exports = {
   getStudents,
   getStudentByName,
   deleteStudentByName,
+  updateStudentByName,
 };

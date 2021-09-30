@@ -9,13 +9,15 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.post('/aluno/cadastrar', alunosMiddlewares.validateInfosStudent, alunosControllers.createNewStudent);
+app.post('/aluno/cadastrar', alunosMiddlewares.validateInfosStudent, alunosMiddlewares.validateEmailStudent, alunosControllers.createNewStudent);
 
 app.get('/aluno/listar', alunosControllers.getStudents);
 
 app.get('/aluno/:name', alunosControllers.getStudentByName);
 
 app.delete('/aluno/:name', alunosControllers.deleteStudentByName);
+
+app.put('/aluno/:nome', alunosMiddlewares.validateEmailStudent, alunosControllers.updateStudentByName);
 
 app.listen(PORT, (err) => {
   if (err) console.log(err);
